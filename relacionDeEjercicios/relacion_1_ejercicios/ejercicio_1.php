@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<?php
+$year=2028;
     
-</body>
-</html>
+if($year%4 == 0){
+    if($year%100 !== 0){
+        if($year%400 !== 0){
+            print "El año es bisiesto (tiene 366 días)";
+        }
+    }else{
+        print "El año no es bisiesto (tiene 365 días)";
+    }
+}else{
+    print "El año no es bisiesto (tiene 365 días)";
+}
+?>
