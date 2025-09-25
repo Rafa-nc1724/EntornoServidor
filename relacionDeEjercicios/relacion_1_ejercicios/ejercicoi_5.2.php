@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TEjercicio_4 Usando while</title>
+    <title>ejercicio_4 Usando Do while</title>
     <style>
         table {
             border-collapse: collapse;
@@ -17,23 +17,23 @@
     </style>
 </head>
 <body>
-    <h2>Tabla 5x7 de números naturales del 1 al 35 (usando while)</h2>
+    <h2>Tabla 5x7 de números naturales del 1 al 35 (usando do...while)</h2>
     <table>
         <?php
-        $num = 1; // Número inicial
-        $i = 0;   // Contador de filas
+        $num = 1; 
+        $i = 0;  
 
-        while ($i < 5) { // 5 filas
+        do {
             echo "<tr>";
-            $j = 0; // Contador de columnas
-            while ($j < 7) { // 7 columnas
+
+            do {
                 echo "<td>$num</td>";
-                $num++; // siguiente número natural
+                $num++;
                 $j++;
-            }
+            } while ($j < 7); // columnas
             echo "</tr>";
             $i++;
-        }
+        } while ($i < 5); // filas
         ?>
     </table>
 </body>
