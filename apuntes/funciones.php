@@ -24,3 +24,36 @@ echo "Contenido<br>";
  * Las funciones no muestran cosas por pantalla devuelven resultados
  * 
  */
+function suma(int $a,$b){
+$c=$a+$b;
+return $c;
+}
+/**
+ * parametro por valor: se realiza una copia de los valores y 
+ * se trabaja con la copia
+ * por referencia, lo que mandamos no se hace una copia se 
+ * manda la direccion de la memeoria de la variable original
+ * se indica con un & delante de la variable
+ */
+//Esta función se pasan los parametros por valor.
+function salarioBruto($salario,$retenciones,$comision){
+    $salario+=$comision;
+    $retenciones=$salario*($retenciones/100);
+    $salario-=$retenciones;
+    return $salario;
+}
+//Esta función se pasan los parametros por referencia.
+/**
+ * Se modificaran las variables 'salario' y 'retenciones'
+ *  una vez se ejecute la función.
+ */
+function salarioBruto2(&$salario,&$retenciones,$comision){
+    $salario+=$comision;
+    $retenciones=$salario*($retenciones/100);
+    $salario-=$retenciones;
+}
+/**
+ * a la hora de llamar a la funcion se puede mandar con el simbolo '&'
+ * pero para que funcione la función tiene que estar realizada para 
+ * que funcione
+ */
