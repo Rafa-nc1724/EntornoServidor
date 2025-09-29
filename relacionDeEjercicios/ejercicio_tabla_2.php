@@ -44,12 +44,30 @@
                 "Edad" => 53
             )
         );
-         foreach ($matriz as $ind => $fila) {
-            echo $ind . "<br>";
-            foreach ($fila as $indc => $valor) {
-                echo $indc . "=" . $valor . "<br>";
-            }
+
+
+        
+        echo "<thead><tr><th>Departamento</th>";                //abrimos la cabecera de la tabla y como la primera tupla está vacía pues ingreso Departamentos por ejemplo
+                                                                //porque esa primera columna perteneceria a la parte de Marketing ventas y eso.
+        foreach (array_keys(reset($matriz)) as $columna) {      //reset me devuelve el primer elemento del array principal, por ejemplo el array de Marketing
+                                                                //y array_keys me devuelve cada clave de ese sub-array, es decir el nombre, apllidos, tec.
+            echo "<th>$columna</th>";                           //por cada vuelta que de el bucle crea un encabezado
         }
+        echo "</tr></thead>";                                   //cerramos la cabecera de la tabla
+
+       
+        echo "<tbody>";                                         //abrimos el cuerpo de la tabla
+        foreach ($matriz as $departamento => $datos) {          //de la matriz, cada departamento nos da sus datos
+            echo "<tr>";                                        //abrimos <tr> para cada departamento uno por uno.
+            echo "<td>$departamento</td>";                      //abrimos <td> e introduce el nombre del primer departamento y cerramos </td>.
+            foreach ($datos as $valor) {                        //hacemos otro foreach que nos rellenará el resto de la fila con el contenido del array.
+                echo "<td>$valor</td>";                         //abrimos <td> metemos el dato del array y cerramos </td>.
+            }
+            echo "</tr>";                                       //por último cerramos el </tr> de ese departamento y el segundo foreach vuelve a empezar en la linea 60
+        }
+        echo "</tbody>";                                        //para acabar cerramos el cuerpo de la tabla.
+
+
 
         ?>
     </table>
