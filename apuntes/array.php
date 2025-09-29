@@ -30,6 +30,12 @@ $a=[2=>"Pepe",1=>"Juan",0=>"Maria"];
 foreach ($a as $ind=>$valor){
     echo $ind."=".$valor."<br>";
 }
+echo "<br>";
+print_r($a); //muestra el contenido de un array con su indice y valor.
+echo "<br>";
+var_dump($a);//muestra el contenido con su indice y valor y de dice el tipo de cada valor.
+echo "<br>";
+echo "Elementos que contien el array ".count($a);
 
 echo "<br>";
 echo "<br>";
@@ -53,7 +59,6 @@ $a[][]="Pepe";
 $a[][]="Maria";
 $a[][3]="Rosa";
 $a[][]="Juan";
-$a[2][]="Antonio";
 //count($a);-> te devuelve el número de indices que tiene el array en su interior
 //pero si es una matriz te devuelve las filas que tiene 
 /**
@@ -80,6 +85,14 @@ $matriz_ciclos=array(
         "OPT"=>"Optativa")
 );
 
-foreach($matriz_ciclos as $ind=>$valor){
-    echo $ind."=".$valor."<br>";
+foreach($matriz_ciclos as $ind=>$fila){
+    echo $ind."<br>";
+    foreach($fila as $indc=>$valor){
+        echo $indc."=".$valor."<br>";
+    }
 }
+echo "Filas de la Matriz Ciclos: ".count($matriz_ciclos)."<br>";
+echo "Elementos en cada Fila: ".count($matriz_ciclos['Daw']);
+//in_array($matriz_ciclos) esta funcion nos permite buscar dentro del array y nos debuelve un bool.
+
+
