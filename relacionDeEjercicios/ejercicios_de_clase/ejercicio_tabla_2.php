@@ -20,14 +20,14 @@
                 "Edad" => 35
             ),
             "Contabilidad" => array(
-                "Nombre" => "Juan",
-                "Apellidos" => "Sanchez",
+                "Nombre" => "Alma",
+                "Apellidos" => "Marcela Gozo",
                 "Salario" => 1750,
                 "Edad" => 28
             ),
             "Ventas" => array(
-                "Nombre" => "María",
-                "Apellidos" => "Carpio",
+                "Nombre" => "Leandro",
+                "Apellidos" => "Gado",
                 "Salario" => 1675,
                 "Edad" => 33
             ),
@@ -39,7 +39,7 @@
             ),
             "Direccion" => array(
                 "Nombre" => "Rosa",
-                "Apellidos" => "Catalá",
+                "Apellidos" => "Melano",
                 "Salario" => 5100,
                 "Edad" => 53
             )
