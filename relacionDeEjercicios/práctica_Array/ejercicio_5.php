@@ -41,12 +41,6 @@ y cantidad.
 
     echo $productos["ordenador"]["nombre"]."<br>";   
     echo $productos["ordenador"]["precio"]."<br>";
-         
-    
-
-
-
-    
     ?>
 </body>
 </html>
