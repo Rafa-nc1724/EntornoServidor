@@ -4,7 +4,7 @@ include
 include_once
 require
 require_once
-Recomendada require
+Recomendada require_one
 Los ficheros que tengan librerias con el require_once
 el once detecta que las librerias ya están incluidas y no te da el error, 
 sin embargo sin el once no lo hace y en el momento que incluamos otra vez 
