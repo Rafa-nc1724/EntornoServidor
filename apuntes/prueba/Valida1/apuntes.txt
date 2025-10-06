@@ -1,0 +1,29 @@
+Algoritmos de Validación
+
+
+si(enviado formulario)
+	si(no hay errores)
+		procesa formulario
+	sino
+		muestra formulario con errores y datos correctos
+	fin si
+Sino
+	muestra el formulario en blanco
+Fin si
+
+
+————————————-
+
+
+
+si(enviadp formulario)
+	valida datos
+Fin si
+si(enviado formulario y no hay errores)
+	procesa formulario
+Sino
+					                En Blanco
+
+	muestra formulario {			    o	                }
+
+					        Con errores y datos correctos

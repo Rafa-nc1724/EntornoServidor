@@ -1,6 +1,9 @@
 <?php
+
 if (!isset($_POST['enviar'])) {
+
 ?>
+
     <form action="" method="POST">
         Nombre:<input type="text" name="nombre"><br><br>
         Apellidos:<input type="text" name="apellidos"><br><br>
@@ -12,7 +15,9 @@ if (!isset($_POST['enviar'])) {
         <!--<input type="submit" name="enviar" value="Enviar">-->
         <button type="submit" name="enviar">Enviar</button>
     </form>
+
 <?php
+
 } else {
     echo "Nombre: " . $_POST['nombre'] . "<br>";
     echo "Apellidos: " . $_POST['apellidos'] . "<br>";
@@ -22,7 +27,6 @@ if (!isset($_POST['enviar'])) {
         echo " ------> ".$valor . "<br>";
     }
     echo "<a href=datosProcesa.php>Enviar Datos</a>";
-    
-
 }
+
 ?>
