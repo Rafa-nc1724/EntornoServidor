@@ -11,15 +11,15 @@ if (isset($_POST['enviar'])) {
     } else {
 ?>
         <form action="" method="POST">
-            Nombre:<input type="text" name="nombre" value="<?= !empty($_POST['nombre'])? $_POST['nombre']: "" ?>"><?= empty($_POST['nombre'])? "<span style='color:red'>El nombre no puede estar vacio</span>" : "" ?><br><br>
-            Apellidos:<input type="text" name="apellidos" value="<?= !empty($_POST['apellidos'])? $_POST['apellidos']: "" ?>"><?= empty($_POST['apellidos'])? "<span style='color:red'>El apellido no puede estar vacio</span>" : "" ?><br><br>
-            Modulos:<?= empty($_POST['modulos'])? "<span style='color:red'>Debes seleccionar almenos una casilla</span>" : "" ?>
+            Nombre:<input type="text" name="nombre" value="<?= !empty($_POST['nombre']) ? $_POST['nombre'] : "" ?>"><?= empty($_POST['nombre']) ? "<span style='color:red'>El nombre no puede estar vacio</span>" : "" ?><br><br>
+            Apellidos:<input type="text" name="apellidos" value="<?= !empty($_POST['apellidos']) ? $_POST['apellidos'] : "" ?>"><?= empty($_POST['apellidos']) ? "<span style='color:red'>El apellido no puede estar vacio</span>" : "" ?><br><br>
+            Modulos:<?= empty($_POST['modulos']) ? "<span style='color:red'>Debes seleccionar almenos una casilla</span>" : "" ?>
             <br>
-            <input type="checkbox" name="modulos[]" value="DWES">Desarrollo web Entorno Servidor<br>
-            <input type="checkbox" name="modulos[]" value="DIW">Diseño de Interfaces Web<br>
-            <input type="checkbox" name="modulos[]" value="DWEC">Desarrollo web Entorno Cliente<br><br>
-            
-           
+            <input type="checkbox" name="modulos[]" value="DWES" <?php echo in_array('DWES', $_POST['modulos']) ? 'checked' : ''; ?>>Desarrollo web Entorno Servidor<br>
+            <input type="checkbox" name="modulos[]" value="DIW" <?php echo in_array('DIW', $_POST['modulos']) ? 'checked' : ''; ?>>Diseño de Interfaces Web<br>
+            <input type="checkbox" name="modulos[]" value="DWEC" <?php echo in_array('DWEC', $_POST['modulos']) ? 'checked' : ''; ?>>Desarrollo web Entorno Cliente<br><br>
+
+
             <button type="submit" name="enviar">Enviar</button>
         </form>
     <?php
