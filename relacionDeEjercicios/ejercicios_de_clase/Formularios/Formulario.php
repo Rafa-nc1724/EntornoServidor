@@ -94,7 +94,7 @@
                 <option value="huelva" <?php if (isset($_POST['provincias']) && $_POST['provincias'] == 'huelva') echo 'selected' ?>>Huelva</option>
 
             </select><?php if (isset($_POST['enviar']) && empty($_POST['provincias'])) {
-                            echo "";
+                            echo "<span style='color:red'>Debes de seleccionar una Provincia</span>";
                         } ?><br><br>
 
             Aficiones:<?php if (isset($_POST['enviar']) && empty($_POST['aficiones'])) echo "<span style='color:red'>Debes seleccionar almenos una afición.</span><br>"; ?>
