@@ -17,7 +17,6 @@
                 try {
                     $conex = new mysqli("localhost", "dwes", "abc123.", "dwes");
                     $conex->set_charset("utf8mb4");
-                    $conex->autocommit(false);
                     $result = $conex->query("select p.cod, p.nombre_corto from producto p;");
                     while ($datos = $result->fetch_object()) {
                         echo "<option value='$datos->cod'>$datos->nombre_corto</option>";
