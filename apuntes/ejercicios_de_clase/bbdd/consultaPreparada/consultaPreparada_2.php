@@ -24,7 +24,7 @@ try {
     //Otra opción sería
     
     $stmt->execute();
-    $result=$stmt->get_result();//el get result devuelve un obgeto por eso lo igualamosa una variable
+    $result=$stmt->get_result();//el get result devuelve un objeto por eso lo igualamosa una variable
     while($fila=$result->fetch_object()){
         echo "Código: $fila->cod<br>";
             echo "Nombre: $fila->nombre<br>";

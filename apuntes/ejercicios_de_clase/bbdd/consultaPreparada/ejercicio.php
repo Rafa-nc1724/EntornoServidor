@@ -1,7 +1,24 @@
 <?php
 /*
-Realiza un formulario con apartados de datos e idiomas que al mandarlo 
-haga una insert a la tabla idiomas en la base de datos empleados
+Realiza un formulario con un apartado de datos donde recojas 
+dni, nombre, apellido, salario. Y otro apartado de idiomas que sea un checbox
+con ingles, aleman, frances, portugues, chino. Tendrá dos botones, uno insertar 
+que hará lo necesario para insertar en la base de datos empleados tanto en la
+tabla datos como en la de idiomas. El otro botón será buscar que cuando le des
+deberá de hacer una lista debajo del formulario, esta lista mostrará los idiomas
+que has seleccionado y todos los nombres los cuales en la base de datos están
+relacionados con ese idioma.
+La lista deberá de estar formada de esta manera:
+    -Idioma:
+        *Nombre
+        *Nombre
+        *Nombre
+    -Idioma:
+        *Nombre
+        *Nombre
+        *Nombre
+Recuerda que la base de datos es empleados tiene dos tablas una 
+datos(dni(PRIMARY_KEY),nombre,apellido,salario) y otra idioma(dni,idioma(ambas PRIMARY_KEY)).
 */
 ?>
 <form action="" method="POST">
@@ -21,6 +38,7 @@ haga una insert a la tabla idiomas en la base de datos empleados
     <input type="checkbox" name="idiomas[]" value="chino">Chino<br>
     <input type="checkbox" name="idiomas[]" value="portugues">Portugués<br>
     <br>
+    <p>================================</p>
     <button type="submit" name="add">Añadir</button>
     <button type="submit" name="search">Buscar</button>
 </form>
@@ -52,8 +70,29 @@ try {
             die($ex->getMessage());
         }
     }
-    if(isset($_POST['search'])){
-        
+    if (isset($_POST['search'])) {
+        if (!empty($_POST['idiomas'])) {
+            echo "<h3>Resultados de la búsqueda</h3>";
+
+            foreach ($_POST['idiomas'] as $idioma) {
+                echo "<strong>$idioma:</strong>";
+                $stmt = $conex->prepare(
+                    "
+                    SELECT d.nombre, d.apellidos, i.idioma
+                    FROM datos d
+                    JOIN idiomas i ON d.dni=i.dni
+                    WHERE idioma=?"
+                );
+                $stmt->execute([$idioma]);
+                $result = $stmt->get_result(); //el get result devuelve un objeto por eso lo igualamosa una variable
+                if ($result && $result->num_rows > 0) {
+                    while ($persona = $result->fetch_object()) {
+                        echo "<br>->$persona->nombre $persona->apellidos";
+                    }
+                }
+                echo "<br>===============<br>";
+            }
+        }
     }
 } catch (Exception $ex) {
     die($ex->getMessage());
