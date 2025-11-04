@@ -88,4 +88,6 @@ if (isset($_POST['acept'])) {
         echo "campo de edad vacío";
     }
 }
+
+
 ?>

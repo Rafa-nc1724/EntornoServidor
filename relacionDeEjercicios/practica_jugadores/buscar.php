@@ -19,9 +19,22 @@
         <input type="submit" name="buscar" value="Buscar">
     </form>
     <input type="submit" name="menu" value="Menú">
-    <?php
-
-    ?>
 </body>
 
 </html>
+
+<?php
+
+try {
+    if(isset($_POST['buscar'])){
+        if(!empty($_POST['valor'])){
+            echo "hola";
+        }
+    } else{
+
+    }
+} catch (Exception $ex) {
+    echo $ex->getMessage();
+}
+
+?>
