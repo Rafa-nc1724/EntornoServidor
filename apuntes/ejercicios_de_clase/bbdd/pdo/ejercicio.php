@@ -2,7 +2,8 @@
 try{
 $db='mysql:host=localhost;dbname=dwes;charset=utf8mb4';
 //mysql:host=nombre del dominio;dbname=nombre de la base de datos;charset=nomenglatura que usamos.
-$opc=array(/* PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_OBJ, */PDO::ATTR_CASE=>PDO::CASE_LOWER);
+$opc=array(/* PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_OBJ, */PDO::ATTR_CASE=>PDO::CASE_LOWER); 
+//PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_OBJ cada vez que usemos el metodo fecth en esta conexion nos devolverá un objeto.
 $conex=new PDO($db,'dwes','abc123.',$opc);
 //Cada vez que recupere cada consutla lo pasará como objeto y en minuscula.
 //exec siempre para cuando no devuelva resultados (filas afectadas)
@@ -23,9 +24,11 @@ $reg2=$conex->exec("UPDATE stock SET unidades=5000000 WHERE producto='ARCLPMP32G
 try {
     $result=$conex->query("SELECT *FROM producto");
     echo "Numero de registros devueltso: ".$result->rowCount()."<br>";
-    while($fila=$result->fetchObject()){
-        
+    while($fila=$result->fetchObject()){//PDO::FETCH_OBJ--> hace lo mismo 
+        //el método fecht() hace un fusionamiento según lo que hagas establecido en la conexión
+        var_dump($fila);
+        echo "<br>=======<br>";
     }
 } catch (PDOException $ex) {
-    
+    echo $ex->getMessage()."<br>";
 }
