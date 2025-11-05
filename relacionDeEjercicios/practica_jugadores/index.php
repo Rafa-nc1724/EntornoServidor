@@ -41,6 +41,7 @@
         $clase = ($tipo === 'error') ? 'error' : 'exito';
         echo "<h3 class='mensaje $clase'>" . $_GET['mensaje'] . "</h3>";
     }
+    
     ?>
 
 </body>
