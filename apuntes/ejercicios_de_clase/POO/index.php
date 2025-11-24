@@ -29,4 +29,5 @@ var_dump($p3);
 echo "<br>=====HERENCIA=======<br>";
 $e=new Empleado("Jose", "Montilla", 45, 2800);
 echo $e->nombre;
+echo $e;
 ?>

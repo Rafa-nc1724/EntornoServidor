@@ -11,4 +11,9 @@ class Empleado extends Persona{
     public function __get(string $name): mixed {
         return parent::__get($name);
     }
+
+    public function __toString(): string
+    {
+        return parent::__toString()." y mi salario es: ".$this->salario;
+    }
 }

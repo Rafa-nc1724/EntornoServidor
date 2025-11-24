@@ -14,6 +14,8 @@ class Persona{
     protected $edad;
     protected static $numperson=0;
 
+//los metodos que no son staticos son los que usará la estancia
+//los metodos que son staticos son los que usará la clase
 
     public function __construct($n="Antonio",$a="López",$e=26) {
         $this->nombre=$n;
