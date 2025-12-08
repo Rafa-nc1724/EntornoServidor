@@ -76,7 +76,7 @@ if (isset($_POST['modificar'])) {
     }
 }
 
-// Saludo
+
 if (isset($_SESSION['cliente'])) {
     $cli = $_SESSION['cliente'];
     $nombreCompleto = $cli['nombre'] . " " . $cli['apellidos'];

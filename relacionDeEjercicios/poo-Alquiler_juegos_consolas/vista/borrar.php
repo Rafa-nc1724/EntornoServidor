@@ -17,13 +17,13 @@ if ($codigo === null) {
     exit;
 }
 
-// Botón volver
+
 if (isset($_POST['volver'])) {
     header("Location: index.php");
     exit;
 }
 
-// Botón borrar
+
 if (isset($_POST['borrar'])) {
     ControladorJuego::borrarJuego($codigo);
     header("Location: index.php?msg=borrado");
@@ -33,7 +33,7 @@ if (isset($_POST['borrar'])) {
 // Obtener datos del juego para mostrar información antes de borrar
 $juego = ControladorJuego::getJuegoPorCodigo($codigo);
 
-// Saludo como en index.php
+
 if (isset($_SESSION['cliente'])) {
     $cli = $_SESSION['cliente'];
     $nombreCompleto = $cli['nombre'] . " " . $cli['apellidos'];

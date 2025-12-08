@@ -11,12 +11,12 @@ if (!isset($_SESSION['cliente'])) {
 $cli = $_SESSION['cliente'];
 $mensaje = "";
 
-// Saludo
+
 $nombreCompleto = $cli['nombre'] . " " . $cli['apellidos'];
 $tipo = ($cli['tipo'] === 'admin') ? '(administrador)' : '(cliente)';
 $saludo = "Hola $nombreCompleto $tipo";
 
-// Procesar devolución con el controlador (MVC)
+// Procesar al devolución
 if (isset($_POST['devolver']) && isset($_POST['id_alquiler'])) {
 
     $resultado = ControladorAlquiler::devolver((int)$_POST['id_alquiler'], $cli['dni']);
@@ -46,7 +46,7 @@ if (isset($_GET['msg']) && $_GET['msg'] === 'devuelto') {
                 Retraso: {$dias} días ({$recargo} €), Total: {$total} €.";
 }
 
-// Obtener lista de alquileres mediante el controlador
+// Obtener lista de alquileres con el controlador
 $resLista = ControladorAlquiler::getAlquileresCliente($cli['dni']);
 ?>
 <!DOCTYPE html>
@@ -93,12 +93,12 @@ if ($mensaje !== "") {
             $fechaAlqStr = $fila['Fecha_alquiler'] ?? null;
             $fechaAlq = $fechaAlqStr ? new DateTime($fechaAlqStr) : null;
 
-            // Fecha prevista → +7 días
+            // Fecha prevista es igual pero siete días +
             $fechaPrev = $fechaAlq ? clone $fechaAlq : new DateTime();
             $fechaPrev->modify("+7 days");
             $fechaPrevStr = $fechaPrev->format("Y-m-d");
 
-            // Fecha devolución (puede ser null)
+            // Fecha devolución (puede ser nula porque no lo ha devuelto )
             $fechaDevolStr = $fila['Fecha_devol'] ?? null;
             $dineroAbonadoStr = "-";
 

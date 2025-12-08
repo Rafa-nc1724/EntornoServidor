@@ -16,7 +16,7 @@ if (!$juego) {
     exit;
 }
 
-// Procesar botón volver
+
 if (isset($_POST['volver'])) {
     header("Location: index.php");
     exit;
@@ -26,7 +26,7 @@ if (isset($_POST['volver'])) {
 $mensaje = "";
 if (isset($_POST['alquilar'])) {
 
-    // Si no hay sesión → ir a login
+    // Si no hay sesión ir a login
     if (!isset($_SESSION['cliente'])) {
         header("Location: login.php");
         exit;
@@ -44,20 +44,20 @@ if (isset($_POST['alquilar'])) {
     }
 }
 
-// COMPROBAR DISPONIBILIDAD
+// se puede alquilar el jeugo esta disponible??
 $estado = ControladorJuego::comprobarDisponibilidad($codigo);
 
 $disponible = ($estado === "disponible");
 $fechaPrevista = "";
 
 if (!$disponible) {
-    // estado contiene fecha_alquiler
+    // estado contiene la fecha_alquiler
     $fechaA = new DateTime($estado);
     $fechaA->modify("+7 days");
     $fechaPrevista = $fechaA->format("Y-m-d");
 }
 
-// SALUDO
+
 if (isset($_SESSION['cliente'])) {
     $cli = $_SESSION['cliente'];
     $saludo = "Hola " . $cli['nombre'] . " " . $cli['apellidos'] .

@@ -37,14 +37,7 @@ class ControladorAlquiler {
         return true;
     }
 
-    /**
-     * Devuelve la información procesada de un alquiler:
-     * - precioSemana
-     * - recargo
-     * - diasRetraso
-     * - total
-     * - cod_juego
-     */
+
     public static function devolver(int $idAlquiler, string $dni): array|false {
         $conex = new Conexion();
 
@@ -83,14 +76,14 @@ class ControladorAlquiler {
         $recargo = $diasRetraso * 1.0;
         $total = $precioSemana + $recargo;
 
-        // Actualizar alquiler (devolución)
+        // Actualizar alquiler
         $sql2 = "UPDATE alquiler SET fecha_devol = ? WHERE id = ?";
         $stmt2 = $conex->prepare($sql2);
         $fechaDevStr = $fechaDev->format('Y-m-d H:i:s');
         $stmt2->bind_param("si", $fechaDevStr, $idAlquiler);
         $stmt2->execute();
 
-        // Liberar juego
+        // cambiar juego de si alguilado a no
         $sql3 = "UPDATE juegos SET Alquilado = 'NO' WHERE Codigo = ?";
         $stmt3 = $conex->prepare($sql3);
         $stmt3->bind_param("s", $fila['cod_juego']);
@@ -105,9 +98,7 @@ class ControladorAlquiler {
         ];
     }
 
-    /**
-     * Devuelve todos los alquileres (incluyendo historial)
-     */
+
     public static function getAlquileresCliente(string $dni) {
         $conex = new Conexion();
         $sql = "SELECT 
