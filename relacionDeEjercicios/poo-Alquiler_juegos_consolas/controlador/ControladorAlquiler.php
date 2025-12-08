@@ -3,9 +3,7 @@ require_once '../modelo/Conexion.php';
 
 class ControladorAlquiler {
 
-    /**
-     * Comprueba si un juego está alquilado actualmente.
-     */
+
     public static function estaAlquilado(string $codigo): bool {
         $conex = new Conexion();
         $sql = "SELECT 1 FROM alquiler WHERE cod_juego = ? AND fecha_devol IS NULL";
@@ -15,9 +13,7 @@ class ControladorAlquiler {
         return $stmt->get_result()->num_rows > 0;
     }
 
-    /**
-     * Alquila un juego si está disponible.
-     */
+
     public static function alquilarJuego(string $codigo, string $dni): bool {
         if (self::estaAlquilado($codigo)) {
             return false;

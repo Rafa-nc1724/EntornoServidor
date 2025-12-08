@@ -89,7 +89,7 @@ if ($mensaje !== "") {
         <?php while ($fila = $resLista->fetch_assoc()): ?>
 
             <?php
-            // Fecha de alquiler
+            // Fecha de alquiler recuerda ponerla con F mayus
             $fechaAlqStr = $fila['Fecha_alquiler'] ?? null;
             $fechaAlq = $fechaAlqStr ? new DateTime($fechaAlqStr) : null;
 
