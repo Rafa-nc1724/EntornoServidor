@@ -4,37 +4,37 @@ require_once 'Conexion.php';
 /**
  * Clase Producto
  *
- * @property string $nom
- * @property float $pre
- * @property int $cod
+ * @property string $nombre
+ * @property float $precio
+ * @property int $codigo
  */
 
 class Producto{
-    private $cod;
-    private $pre;
-    private $nom;
+    private $codigo;
+    private $precio;
+    private $nombre;
 
-    public function __construct($cod=0,$nombre="",$precio=0){
-        $this->cod=$cod;
-        $this->nom=$nombre;
-        $this->pre=$precio;
+    public function __construct($codigo=0,$nombre="",$precio=0){
+        $this->codigo=$codigo;
+        $this->nombre=$nombre;
+        $this->precio=$precio;
     }
 
-    public function nuevoProducto($cod,$nom,$pre){
-        $this->cod=$cod;
-        $this->nom=$nom;
-        $this->pre=$pre;
+    public function nuevoProducto($codigo,$nombre,$precio){
+        $this->codigo=$codigo;
+        $this->nombre=$nombre;
+        $this->precio=$precio;
     }
 
     public function __toString()
     {
-        return "<br>Producto[nombre:$this->nom, precio:$this->pre, codigo:$this->cod].";
+        return "<br>Producto[nombre:$this->nombre, precio:$this->precio, codigo:$this->codigo].";
     }
 
     public function insert(){
         try{
             $conex= new Conexion();
-            $conex->query("INSERT INTO Producto (nombre,precio,codigo) VALUES ('$this->nom',$this->pre,$this->cod) ");
+            $conex->query("INSERT INTO Producto (nombre,precio,codigo) VALUES ('$this->nombre',$this->precio,$this->codigo) ");
             $fila=$conex->affected_rows;
             $conex->close();
             return $fila;
@@ -44,13 +44,13 @@ class Producto{
         }
     }
 
-    public static function search($cod){
+    public static function search($codigo){
         try{
             $conex=new Conexion();
-            $result=$conex->query("SELECT * FROM Producto WHERE codigo=$cod");
+            $result=$conex->query("SELECT * FROM Producto WHERE codigo=$codigo");
             if($result->num_rows){
                 $reg=$result->fetch_object();
-                $p=new Producto($reg->cod,$reg->nom,$reg->pre);
+                $p=new Producto($reg->codigo,$reg->nombre,$reg->precio);
             }else $p=false;
             
             $conex->close();
@@ -69,7 +69,8 @@ class Producto{
                 //$p=new self();
                 while($fila=$result->fetch_object()){
                     //$p->nuevoProducto($fila->codigo,$fila->nombre,$fila->precio);
-                    $p=new self($fila->cod,$fila->nom,$fila->pre);
+
+                    $p=new self($fila->codigo,$fila->nombre,$fila->precio);
                     $productos[]=$p;
                     //$productos[]=clone($p);
                 }
@@ -82,4 +83,11 @@ class Producto{
             die("ERROR CON LA BD: ".$ex->getMessage());
         }
     }
+
+    public function __get($name)
+    {
+        return $this->$name;
+    }
+
+
 }

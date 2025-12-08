@@ -7,7 +7,7 @@ class ProductoControl{
     public static function insert($p){
         try{
             $conex= new Conexion();
-            $conex->query("INSERT INTO Producto (nombre,precio,codigo) VALUES ('$p->nom',$p->pre,$p->cod) ");
+            $conex->query("INSERT INTO Producto (nombre,precio,codigo) VALUES ('$p->nombre',$p->precio,$p->codigo) ");
             $fila=$conex->affected_rows;
             $conex->close();
             return $fila;
@@ -17,13 +17,13 @@ class ProductoControl{
         }
     }
 
-    public static function search($cod){
+    public static function search($codigo){
         try{
             $conex=new Conexion();
-            $result=$conex->query("SELECT * FROM Producto WHERE codigo=$cod");
+            $result=$conex->query("SELECT * FROM Producto WHERE codigo=$codigo");
             if($result->num_rows){
                 $reg=$result->fetch_object();
-                $p=new Producto($reg->cod,$reg->nom,$reg->pre);
+                $p=new Producto($reg->codigo,$reg->nombre,$reg->precio);
                 
 
             }else $p=false;

@@ -1,33 +1,38 @@
 <?php
-require_once 'Conexion.php';
+require_once '../controller/Conexion.php';
 
 /**
  * Clase Producto
  *
- * @property string $nom
- * @property float $pre
- * @property int $cod
+ * @property string $nombre
+ * @property float $precio
+ * @property int $codigo
  */
 
 class Producto{
-    private $cod;
-    private $pre;
-    private $nom;
+    private $codigo;
+    private $precio;
+    private $nombre;
 
-    public function __construct($cod=0,$nombre="",$precio=0){
-        $this->cod=$cod;
-        $this->nom=$nombre;
-        $this->pre=$precio;
+    public function __construct($codigo=0,$nombre="",$precio=0){
+        $this->codigo=$codigo;
+        $this->nombre=$nombre;
+        $this->precio=$precio;
     }
 
-    public function nuevoProducto($cod,$nom,$pre){
-        $this->cod=$cod;
-        $this->nom=$nom;
-        $this->pre=$pre;
+    public function nuevoProducto($codigo,$nombre,$precio){
+        $this->codigo=$codigo;
+        $this->nombre=$nombre;
+        $this->precio=$precio;
     }
 
     public function __toString()
     {
-        return "<br>Producto[nombre:$this->nom, precio:$this->pre, codigo:$this->cod].";
+        return "<br>Producto[nombre:$this->nombre, precio:$this->precio, codigo:$this->codigo].";
+    }
+
+    public function __get($name)
+    {
+        return $this->$name;
     }
 }
